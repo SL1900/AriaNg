@@ -1,0 +1,5 @@
+services:
+    ariang:
+        image: ghcr.io/sl1900/ariang
+        ports:
+            - "6880:6880"
