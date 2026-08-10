@@ -52,13 +52,15 @@
             }
 
             for (var i = 0; i < urls.length; i++) {
-                if (urls[i] === '' || urls[i].trim() === '') {
+                if (urls[i].url === '' || urls[i].url.trim() === '') {
                     continue;
                 }
 
+                var task_options = angular.copy(options);
+                if(urls[i].out) task_options.out = urls[i].out;
                 tasks.push({
-                    urls: [urls[i].trim()],
-                    options: options
+                    urls: [urls[i].url.trim()],
+                    options: task_options
                 });
             }
 

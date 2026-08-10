@@ -160,9 +160,12 @@
                     var line = lines[i];
 
                     if (line.match(/^(http|https|ftp|sftp):\/\/.+$/)) {
-                        result.push(line);
+                        if(lines[i+1] && lines[i+1].trim().startsWith("out=")) {
+                            result.push({ url: line, out: lines[i+1].trim().slice(4) });
+                        }
+                        else result.push({ url: line });
                     } else if (line.match(/^magnet:\?.+$/)) {
-                        result.push(line);
+                        result.push({ url: line });
                     }
                 }
 
